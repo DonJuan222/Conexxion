@@ -1,4 +1,3 @@
-from tokenize import blank_re
 from django.db import models
 from django.contrib.auth.models import User
 from home.models import municipio
@@ -6,7 +5,6 @@ from home.models import estado
 from home.models import lugar_Residencia
 
 # Create your models here.
-
 
 class cliente(models.Model):
     ip= models.CharField(max_length=15, primary_key = True) 
@@ -19,8 +17,8 @@ class cliente(models.Model):
     id_soporte_tecnico=models.ForeignKey(User, on_delete=models.CASCADE, null=False,blank=False, related_name='Id_Soporte')
     id_Cartera=models.ForeignKey(User, on_delete=models.CASCADE, null=False,blank=False, related_name='Id_Cartera')
     id_Municipio=models.ForeignKey(municipio, on_delete=models.CASCADE,null=False,blank=False, related_name='Id_Municipio')
-    id_Estado=models.OneToOneField(estado, on_delete=models.CASCADE, null=False,blank=False, related_name='Id_Estado')
-    id_lugar_Residencia=models.OneToOneField(lugar_Residencia, on_delete=models.CASCADE, null=False,blank=False, related_name='Id_Residencia')
+    id_Estado=models.OneToOneField(estado, on_delete=models.CASCADE, null=True,blank=True, related_name='Id_Estado')
+    id_lugar_Residencia=models.OneToOneField(lugar_Residencia, on_delete=models.CASCADE, null=True,blank=True, related_name='Id_Residencia')
 
     class Meta:
         db_table='cliente'

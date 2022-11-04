@@ -5,12 +5,14 @@
 
 		{% for cliente in Clientes %}
 
-		<div class="col-lg-4">
+		<div class="col-lg-2">
 			<div class="box-element product">
-				<h2><strong>{{cliente.ip}}</strong></h2>
-                <h2>{{cliente.nombre}}</h2>
-                <h2>{{cliente.telefono_uno}}</h2>
-                <h2>{{cliente.mensualidad}}</h2>
+					<h4><strong>Ip del cliente:</strong> {{cliente.ip}}</h4>
+					<h4><strong> Nombre:</strong>  {{cliente.nombre}}</h4>
+					<h4><strong> Primer Telefono: </strong>{{cliente.telefono_uno}}</h4>
+					<h4><strong> Mensualidad: </strong> {{cliente.mensualidad}}</h4>
+					<h4><strong> Fecha de Instalacion: </strong> {{cliente.fecha_Instalacion}}</h4>
+				</a>
 			</div>
 		</div>
 
