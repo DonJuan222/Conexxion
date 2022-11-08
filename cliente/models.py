@@ -10,6 +10,7 @@ class cliente(models.Model):
     ip= models.CharField(max_length=15, primary_key = True) 
     cedula=models.CharField(max_length=15, null=True)
     nombre=models.CharField(max_length=100, null=False, verbose_name='Nombre del Cliente')
+    apellido=models.CharField(max_length=100, null=False, verbose_name='Apellido del Cliente')
     telefono_uno=models.CharField(max_length=12, null=False, verbose_name='Primer Telefono ')
     telefonos_dos=models.CharField(max_length=12, null=True,blank=True, verbose_name='Segundo Telefono')
     mensualidad=models.CharField(max_length=100, null=True, verbose_name='Mensualidad')
