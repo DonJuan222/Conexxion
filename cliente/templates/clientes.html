@@ -16,10 +16,19 @@ method="POST">
 </form>
 
 
+<div>
+	<ul>
+		<li>
+			<a href="/cliente/create/"> Crear Cliente</a>
+		</li>
+	</ul>
+</div>
+<div>
 
 <table class="table table_bordered">
 	<thead>
 		<tr>
+			<td><strong>#</strong> </td>
 			<td><strong>Ip del cliente</strong> </td>
 			<td><strong>Cedula</strong></td>
 			<td><strong>Nombre</strong></td>
@@ -29,6 +38,7 @@ method="POST">
 			<td><strong>Fecha de Instalacion</strong></td>
 			<td><strong>Municipio</strong></td>
 			<td><strong>Estado</strong></td>
+			<td><strong></strong></td>
 			<!-- <td><strong>Pueblo</strong></td>
 			<td><strong>Direccion</strong></td>
 			<td><strong>Vereda</strong></td>
@@ -42,16 +52,20 @@ method="POST">
 		{% for cliente in Clientes %}
 
 		<tr>
+			<td>{{cliente.id}}</td>
 			<td>{{cliente.ip}}</td>
 			<td>{{cliente.cedula}}</td>
 			<td>{{cliente.nombre}}</td>
 			<td>{{cliente.apellido}}</td>
 			<td>{{cliente.telefono_uno}}</td>
 			<td>{{cliente.mensualidad}}</td>
-			<td> {{cliente.fecha_Instalacion}}</td>
-			<td> {{cliente.id_Municipio}}</td>
-			<td> {{cliente.id_Estado}}</td>
+			<td>{{cliente.fecha_Instalacion}}</td>
+			<td>{{cliente.id_Municipio}}</td>
+			<td>{{cliente.id_Estado}}</td>
+			<td><a href="{% url 'ver_Cliente' cliente.id %}">Ver más</a></td>
 			
+		
+		
 
 
 		</tr>
@@ -71,4 +85,4 @@ method="POST">
 </table>
 
 
-{% endblock %}
+{% endblock content %}

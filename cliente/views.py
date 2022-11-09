@@ -1,7 +1,6 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from cliente.models import cliente
 from django.db.models import Q
-from home.models import lugar_Residencia
 from .forms import ClientForm
 # Create your views here.
 
@@ -10,10 +9,11 @@ def client(request):
     Clientes=cliente.objects.all()
     if busqueda:
         Clientes = cliente.objects.filter(
-            Q(ip_icontains=busqueda)|
+            Q(ip__icontains=busqueda)|
             Q(cedula__icontains=busqueda)|
             Q(nombre__icontains=busqueda)|
             Q(apellido__icontains=busqueda)
+        
         ).distinct()
 
     return render(request, 'clientes.html',{
@@ -42,9 +42,9 @@ def create_Cliente(request):
 
         
     
-def client_detail(request):
-    # client=get_object_or_404(cliente,pk=client_ip )
-    return render(request, 'client_details.html')
+def ver_Cliente(request, client_id):
+    client=cliente.objects.get(id=client_id)
+    return render(request, 'ver_Cliente.html', {
+        'client':client
+    })
 
-
-    

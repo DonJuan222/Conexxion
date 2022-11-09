@@ -12,11 +12,14 @@
 
     {% csrf_token %}
 
-    {{form}}
+    {{form.as_p}}
     <button>
         Guardar
     </button>
-</form>
 
+</form>
+<button>
+    <a href="/cliente/">Volver</a>
+</button>
 
 {% endblock %}

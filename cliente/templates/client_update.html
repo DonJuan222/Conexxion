@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{cliente.nombre}}
+    <button>
+        Actualizar
+    </button>
+</form>
+
+
+{% endblock %}
