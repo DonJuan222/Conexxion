@@ -6,7 +6,7 @@ from .forms import ClientForm
 
 def client(request):
     busqueda = request.POST.get("buscar")
-    Clientes=cliente.objects.all()
+    Clientes=cliente.objects.all().order_by('id')
     if busqueda:
         Clientes = cliente.objects.filter(
             Q(ip__icontains=busqueda)|
@@ -42,9 +42,23 @@ def create_Cliente(request):
 
         
     
-def ver_Cliente(request, client_id):
-    client=cliente.objects.get(id=client_id)
-    return render(request, 'ver_Cliente.html', {
-        'client':client
-    })
+def editar_Cliente(request, client_id):
+    client=get_object_or_404(cliente, id=client_id)
 
+    data={
+        'form': ClientForm(instance=client)
+    }
+
+    if request.method== 'POST':
+        formulario=ClientForm(data=request.POST, instance=client, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('cliente')
+        data['form']=formulario    
+    return render(request, 'client_update.html', data)
+
+
+def eliminar_Cliente(request, client_id):
+    client=get_object_or_404(cliente, id=client_id)
+    client.delete()
+    return redirect('cliente')
