@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1> Crear Cliente </h1>
+    
+    {{error}}
+
+
+<form action="" method="POST">
+
+    {% csrf_token %}
+
+    {{form.as_p}}
+    <button>
+        Guardar
+    </button>
+
+</form>
+<button>
+    <a href="/cliente/">Volver</a>
+</button>
+
+{% endblock %}
