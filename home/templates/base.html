@@ -1,42 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
+
 <head>
     
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Aplicacion web</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+
 </head>
 
 <body>
 
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">Conexxion</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li><a href="/cliente">Clientes </a></li>
-            </ul>
-                <ul class="nav navbar-nav navbar-right">
-                {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="/logout">Cerrar Sesion</a>
-                </li>
-            </ul>
-            {% else %}
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Registrarse</a></li>
-                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesion</a></li>
-            </ul>
-            {% endif %}
-        </div>
-    </nav>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="{% static 'images/logo1.png' %}" alt="Logo" width="85" height="50" class="d-inline-block align-text-top">
+              </a>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        {% if user.is_authenticated %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="/logout"><i class="bi bi-door-closed"></i>Cerrar Sesión</a>
+                      </li>
+                      {% else %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="/signup"><i class="bi bi-plus-square"></i>Registrarse</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/login"><i class="bi bi-box-arrow-in-right"></i>Ingresar</a>
+                      </li>
+                    </ul>
+                    {% endif %}
+                  </div>
+                </div>
+              </nav>
 
     {% block content %}
     {% endblock %}

@@ -36,10 +36,6 @@ def signup(request):
         })
 
 
-def task(request):
-    return render(request, 'task.html')
-
-
 def cerrarSesion(request):
     logout(request)
     return redirect('home')

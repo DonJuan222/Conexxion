@@ -1,19 +1,39 @@
-{%  extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
-<h1> Formulario de registro</h1>
 
-{{error}}
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+            <form method="POST" class="card card-body">
+                <h1 class="text-center"> Registro</h1>
+                {{error}}
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username">Nombre de Usuario: </label>
+                    <input type="text" name="username" id="username"
+                    class="form-control" placeholder="Escribe tu nombre de Usuario">
+                </div>
+                <div class="mb-3">
+                    <label for="password1">Contraseña: </label>
+                    <input type="password" name="password1" id="password1"
+                    class="form-control" placeholder="Escribe tu Contraseña">
+                </div>
+                <div class="mb-3">
+                    <label for="password2">Confirmar Contraseña: </label>
+                    <input type="password" name="password2" id="password2"
+                    class="form-control" placeholder="Confirmar tu Contraseña">
+                </div>
 
-<form method="POST"> 
+                <button class="btn btn-dark">
+                    Registrarse
+                </button>
+            </form>
 
-    {% csrf_token %}
-{{form.as_p}}
+        </div>
 
-<button>
-    Registrarse
-</button>
+    </div>
 
-</form>
+</main>
 
-{%  endblock %}
+{% endblock %}
