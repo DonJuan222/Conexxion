@@ -2,8 +2,11 @@ from django.shortcuts import render,redirect, get_object_or_404
 from cliente.models import cliente
 from django.db.models import Q
 from .forms import ClientForm
-# Create your views here.
+from django.contrib.auth.decorators import login_required
 
+
+# Create your views here.
+@login_required
 def client(request):
     busqueda = request.POST.get("buscar")
     Clientes=cliente.objects.all().order_by('id')
@@ -21,7 +24,7 @@ def client(request):
 
     })
 
-
+@login_required
 def create_Cliente(request):
     if request.method == 'GET':
         return render(request, 'createCliente.html',{
@@ -41,7 +44,7 @@ def create_Cliente(request):
             })
 
         
-    
+@login_required   
 def editar_Cliente(request, client_id):
     client=get_object_or_404(cliente, id=client_id)
 
@@ -57,7 +60,7 @@ def editar_Cliente(request, client_id):
         data['form']=formulario    
     return render(request, 'client_update.html', data)
 
-
+@login_required
 def eliminar_Cliente(request, client_id):
     client=get_object_or_404(cliente, id=client_id)
     client.delete()
