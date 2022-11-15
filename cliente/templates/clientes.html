@@ -22,7 +22,7 @@ method="POST">
 
 <main class="container">
 	<div class="row">
-		<div class="col-md-4 offset-md-2 mt-4">
+		<div class="col-md-3 offset-md-1 mt-5">
 			<table class="table table_bordered">
 				<thead>
 					<tr>
@@ -34,9 +34,13 @@ method="POST">
 						<td><strong>Primer Telefono</strong></td>
 						<td><strong>Mensualidad</strong></td>
 						<td><strong>Fecha de Instalacion</strong></td>
+						<td><strong>Valor del Pago</strong></td>
+						<td><strong>Fecha del pago</strong></td>
+						<td><strong>Valido Hasta</strong></td>
 						<td><strong>Municipio</strong></td>
 						<td><strong>Estado</strong></td>
 						<td><strong>Opciones</strong></td>
+						
 						<!-- <td><strong>Pueblo</strong></td>
 						<td><strong>Direccion</strong></td>
 						<td><strong>Vereda</strong></td>
@@ -58,8 +62,12 @@ method="POST">
 						<td>{{cliente.telefono_uno}}</td>
 						<td>{{cliente.mensualidad}}</td>
 						<td>{{cliente.fecha_Instalacion}}</td>
+						<td>{{cliente.valor_Pago}}</td>
+						<td>{{cliente.fecha_Pago}}</td>
+						<td>{{cliente.valido}}</td>
 						<td>{{cliente.id_Municipio}}</td>
 						<td>{{cliente.id_Estado}}</td>
+						
 						<td><a href="{% url 'editar_Cliente' cliente.id %}" class="btn btn-secondary btn-sm">Editar</a>
 							<a href="{% url 'eliminar_Cliente' cliente.id %}" class="btn btn-danger btn-sm">Eliminar</a></td>
 						

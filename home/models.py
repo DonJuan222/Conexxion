@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class municipio(models.Model):
     nombre=models.CharField(max_length=100, null=False, verbose_name='Nombre del Municipio')
@@ -38,3 +38,7 @@ class lugar_Residencia(models.Model):
         verbose_name='Residencia'
         verbose_name_plural='Residencias'
         ordering=['id']
+
+    def __str__(self):
+        return self.pueblo
+   
