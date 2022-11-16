@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<section>
+    <div>
+        <a href="/estado/create/" class="btn btn-secondary btn-sm offset-md-2 mt-4"> Crear Estado</a>
+    </div>
+</section>
+
+<main class="container">
+    <div class="row mb-2">
+        <div class="col-sm-4 offset-md mt-5">
+            <table  align="right" class="table table_bordered">
+                <thead>
+                    <tr>
+                        <td><strong>#</strong> </td>
+                        <td><strong>Tipo</strong> </td>
+                        <td><strong>Opciones</strong> </td>
+
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for estado in estados %}
+
+                    <tr>
+                        <td>{{estado.id}}</td>
+                        <td>{{estado.tipo}}</td>
+
+                        <td><a href="{% url 'editar_Estado' estado.id %}"
+                                class="btn btn-secondary btn-sm mt-1">Editar</a>
+                            <a href="{% url 'eliminar_Estado' estado.id %}"
+                                class="btn btn-danger btn-sm mt-1">Eliminar</a>
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+
+{% endblock content %}

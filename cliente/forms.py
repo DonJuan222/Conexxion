@@ -1,5 +1,6 @@
 from django.forms import ModelForm
-from .models import cliente
+from .models import cliente, estado, municipio, lugar_Residencia
+
 
 
 class ClientForm(ModelForm):
@@ -7,7 +8,20 @@ class ClientForm(ModelForm):
         model = cliente
         fields ='__all__'
 
+class MunicipioForm(ModelForm):
+    class Meta:
+        model = municipio
+        fields ='__all__'
 
-        # 'ip','cedula','nombre','telefono_uno','telefonos_dos',
-        # 'mensualidad', 'fecha_Instalacion','id_soporte_tecnico','id_Cartera','id_Municipio','id_Estado',
-        # 'id_lugar_Residencia' 
+class EstadoForm(ModelForm):
+    class Meta:
+        model = estado
+        fields ='__all__'
+
+class ResidenciaForm(ModelForm):
+    class Meta:
+        model = lugar_Residencia
+        fields ='__all__'
+
+
+    

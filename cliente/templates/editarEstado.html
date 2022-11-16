@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<main class="container">
+    <div class="row">
+        <section class="col-md-4 offset-md-4 mt-5">
+            <form method="POST" class="card card-body">
+                <h2>Editar Estado</h2>
+                <hr>
+                {% csrf_token %}
+                {{form}}
+                <br>
+                <div class="d-flex justify-content-end">
+                    <a href="{% url 'cliente' %}" class="btn btn-danger ">Cancelar</a>
+                    &nbsp;
+                    <input type="submit" value="Editar" class="btn btn-secondary ">
+                </div>
+            </div>
+        </section>
+    </form>
+</main>
+
+{% endblock %}
