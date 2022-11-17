@@ -23,22 +23,13 @@ method="POST">
 	<div>
 		<a href="/cliente/create/" class="btn btn-secondary btn-sm offset-md-2"> Crear Cliente</a>
 	</div>
-	<div>
-		<a href="/municipio/" class="btn btn-secondary btn-sm offset-md-2 mt-1"> Ver los Municipio</a>
-	</div>
-	<div>
-		<a href="/estado/" class="btn btn-secondary btn-sm offset-md-2 mt-1"> Ver los Estados</a>
-	</div>
-	<div>
-		<a href="/residencia/" class="btn btn-secondary btn-sm offset-md-2 mt-1"> Ver los Lugares de Residencia</a>
-	</div>
 	
 	</section>
 
 
 <main class="container">
 	<div class="row">
-		<div class="col-md-3 offset-md mt-5">
+		<div class="col-md-3 offset-md mt-2">
 			<table class="table table_bordered">
 				<thead>
 					<tr>
@@ -80,7 +71,10 @@ method="POST">
 						<td>{{cliente.id_Estado}}</td>
 						<td>{{cliente.id_lugar_Residencia.pueblo}}</td>
 						<td><a href="{% url 'editar_Cliente' cliente.id %}" class="btn btn-secondary btn-sm mt-1">Editar</a>
-							<a href="{% url 'eliminar_Cliente' cliente.id %}" class="btn btn-danger btn-sm mt-1">Eliminar</a></td>
+							<a href="{% url 'datos' %}" class="btn btn-secondary btn-sm mt-1">Ver mas</a>
+							<a href="{% url 'eliminar_Cliente' cliente.id %}" class="btn btn-danger btn-sm mt-1">Eliminar</a>
+							</td>
+							
 						
 					</tr>
 					{% endfor %}

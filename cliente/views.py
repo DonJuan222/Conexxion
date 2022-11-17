@@ -25,6 +25,17 @@ def client(request):
     })
 
 @login_required
+def datos(request):
+    
+    datos=cliente.objects.all()
+
+
+    return render(request,'datosPago.html',{
+        'datos':datos
+
+    })
+
+@login_required
 def create_Cliente(request):
     if request.method == 'GET':
         return render(request, 'createCliente.html',{
