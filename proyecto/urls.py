@@ -8,4 +8,6 @@ urlpatterns = [
     path('', include('home.urls')),
 
     path('', include('cliente.urls')),
+
+  
 ]
