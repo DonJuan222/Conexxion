@@ -9,7 +9,6 @@ urlpatterns = [
 
     path('', include('cliente.urls')),
 
-    path('', include('cal.urls')),
 
   
 ]

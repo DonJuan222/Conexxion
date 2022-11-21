@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect, get_object_or_404
-from cliente.models import cliente,municipio, estado, lugar_Residencia
+from cliente.models import cliente,municipio, estado, lugar_Residencia,agenda
 from django.db.models import Q
 from .forms import ClientForm, MunicipioForm, EstadoForm, ResidenciaForm
 from django.contrib.auth.decorators import login_required
@@ -19,7 +19,7 @@ def client(request):
         
         ).distinct()
 
-    return render(request, 'clientes.html',{
+    return render(request, 'CRUD/clientes.html',{
         'Clientes':Clientes
 
     })
@@ -30,7 +30,7 @@ def datos(request):
     datos=cliente.objects.all()
 
 
-    return render(request,'datosPago.html',{
+    return render(request,'CRUD/datosPago.html',{
         'datos':datos
 
     })
@@ -38,7 +38,7 @@ def datos(request):
 @login_required
 def create_Cliente(request):
     if request.method == 'GET':
-        return render(request, 'createCliente.html',{
+        return render(request, 'CRUD/createCliente.html',{
         'form': ClientForm
     })
     else:
@@ -49,7 +49,7 @@ def create_Cliente(request):
             return redirect('cliente')
 
         except ValueError:
-            return render (request, 'createCliente.html',{
+            return render (request, 'CRUD/createCliente.html',{
                 'form': ClientForm,
                 'error': 'Por favor proporciona los datos'
             })
@@ -69,7 +69,7 @@ def editar_Cliente(request, client_id):
             formulario.save()
             return redirect('cliente')
         data['form']=formulario    
-    return render(request, 'client_update.html', data)
+    return render(request, 'CRUD/client_update.html', data)
 
 @login_required
 def eliminar_Cliente(request, client_id):
@@ -81,13 +81,13 @@ def eliminar_Cliente(request, client_id):
 @login_required
 def mostrar_municipio(request):
     municipios=municipio.objects.all()
-    return render(request, 'mostrarMunicipio.html',{
+    return render(request, 'CRUD/mostrarMunicipio.html',{
         'municipios':municipios})
 
 @login_required
 def create_Municipio(request):
     if request.method == 'GET':
-        return render(request, 'createMunicipio.html',{
+        return render(request, 'CRUD/createMunicipio.html',{
         'form': MunicipioForm
     })
     else:
@@ -98,7 +98,7 @@ def create_Municipio(request):
             return redirect('cliente')
 
         except ValueError:
-            return render (request, 'createMunicipio.html',{
+            return render (request, 'CRUD/createMunicipio.html',{
                 'form': MunicipioForm,
                 'error': 'Por favor proporciona los datos'
             })
@@ -118,7 +118,7 @@ def editar_Municipio(request, municipio_id):
             formulario.save()
             return redirect('municipio')
         data['form']=formulario    
-    return render(request, 'editarMunicipio.html', data)
+    return render(request, 'CRUD/editarMunicipio.html', data)
 
 @login_required
 def eliminar_Municipio(request, municipio_id):
@@ -130,13 +130,13 @@ def eliminar_Municipio(request, municipio_id):
 @login_required
 def mostrar_Estado(request):
     estados=estado.objects.all()
-    return render(request, 'mostrarEstado.html',{
+    return render(request, 'CRUD/mostrarEstado.html',{
         'estados':estados})
         
 @login_required
 def create_Estado(request):
     if request.method == 'GET':
-        return render(request, 'crearEstado.html',{
+        return render(request, 'CRUD/crearEstado.html',{
         'form': EstadoForm
     })
     else:
@@ -147,7 +147,7 @@ def create_Estado(request):
             return redirect('estado')
 
         except ValueError:
-            return render (request, 'crearEstado.html',{
+            return render (request, 'CRUD/crearEstado.html',{
                 'form': EstadoForm,
                 'error': 'Por favor proporciona los datos'
             })
@@ -167,7 +167,7 @@ def editar_Estado(request, estado_id):
             formulario.save()
             return redirect('estado')
         data['form']=formulario    
-    return render(request, 'editarEstado.html', data)
+    return render(request, 'CRUD/editarEstado.html', data)
 
 @login_required
 def eliminar_Estado(request, estado_id):
@@ -179,13 +179,13 @@ def eliminar_Estado(request, estado_id):
 @login_required
 def mostrar_Residencia(request):
     residencias=lugar_Residencia.objects.all()
-    return render(request, 'mostrarResidencia.html',{
+    return render(request, 'CRUD/mostrarResidencia.html',{
         'residencias':residencias})
         
 @login_required
 def create_Residencia(request):
     if request.method == 'GET':
-        return render(request, 'createResidencia.html',{
+        return render(request, 'CRUD/createResidencia.html',{
         'form': ResidenciaForm
     })
     else:
@@ -196,7 +196,7 @@ def create_Residencia(request):
             return redirect('residencia')
 
         except ValueError:
-            return render (request, 'createResidencia.html',{
+            return render (request, 'CRUD/createResidencia.html',{
                 'form': ResidenciaForm,
                 'error': 'Por favor proporciona los datos'
             })
@@ -216,10 +216,19 @@ def editar_Residencia(request, residencia_id):
             formulario.save()
             return redirect('residencia')
         data['form']=formulario    
-    return render(request, 'editarResidencia.html', data)
+    return render(request, 'CRUD/editarResidencia.html', data)
 
 @login_required
 def eliminar_Residencia(request, residencia_id):
     residencias=get_object_or_404(lugar_Residencia, id=residencia_id)
     residencias.delete()
     return redirect('estado')
+
+@login_required
+def mostrar_agenda(request):
+    agendas=agenda.objects.all()
+    return render(request, 'agenda.html',{
+        'agendas':agendas})
+   
+  
+    

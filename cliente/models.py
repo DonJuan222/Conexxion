@@ -7,6 +7,23 @@ from home.models import lugar_Residencia
 
 # Create your models here.
 
+class agenda(models.Model):
+    descripcion = models.CharField(max_length=200,verbose_name='Descripciones')
+    valor_Pago = models.IntegerField(verbose_name='Valor del pago')
+    fecha_pago = models.DateTimeField(null=True,verbose_name='Fecha de pago')
+    fecha_Vencimiento = models.DateTimeField(null=True,verbose_name='Valido Hasta')
+    fecha_Instalacion=models.DateField(null=True, verbose_name='Fecha de Instalacion')
+    
+    class Meta:
+        db_table='Agenda'
+        verbose_name='Agenda'
+        verbose_name_plural='Agendas'
+       
+    
+    def __str__(self):
+        return self.descripcion
+
+
 class cliente(models.Model):
 
     ip= models.CharField(max_length=15,null=False, verbose_name='Ip del Cliente' ) 
@@ -21,6 +38,7 @@ class cliente(models.Model):
     id_Municipio=models.ForeignKey(municipio, on_delete=models.CASCADE,null=True,blank=True, related_name='Id_Municipio')
     id_Estado=models.ForeignKey(estado, on_delete=models.CASCADE, null=True,blank=True, related_name='Id_Estado')
     id_lugar_Residencia=models.ForeignKey(lugar_Residencia, on_delete=models.CASCADE, null=True,blank=True, related_name='Id_Residencia')
+    agenda=models.ForeignKey(agenda, on_delete=models.CASCADE, null=True,blank=True, verbose_name='Datos de Fecha')
 
     class Meta:
         db_table='cliente'
@@ -28,5 +46,9 @@ class cliente(models.Model):
         verbose_name_plural='Clientes'
         ordering=['ip']
     
-    
+    def __str__(self):
+        return self.nombre
+
+
+
 
