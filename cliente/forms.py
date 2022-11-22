@@ -24,4 +24,10 @@ class ResidenciaForm(ModelForm):
         fields ='__all__'
 
 
+# class agendaModel(ModelForm):
+#     class Meta:
+#         model = lugar_Residencia
+#         fields ='__all__'
+
+
     
