@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'home',
     'cliente',
     'agenda',
+    'usuario',
    
 
     
@@ -71,7 +72,7 @@ WSGI_APPLICATION = 'proyecto.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'conexxion_db',
+        'NAME': 'db_conexxion',
         'USER': 'root',
         'PASSWORD': '150346Dkt810',
         'HOST': '127.0.0.1',
@@ -99,11 +100,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL='usuario.Usuario'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-PE'
 
 TIME_ZONE = 'UTC'
 

@@ -9,6 +9,8 @@ urlpatterns = [
 
     path('', include('cliente.urls')),
 
+    path('', include('usuario.urls')),
+
 
 
 
