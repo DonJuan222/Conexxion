@@ -8,7 +8,7 @@ class FormularioLogin(AuthenticationForm):
         self.fields['username'].widget.attrs['class']='form-control'
         self.fields['username'].widget.attrs['placeholder']='Nombre de Usuario'
         self.fields['password'].widget.attrs['class']='form-control'
-        self.fields['password'].widget.attrs['placeolder']='Contraseña'
+        self.fields['password'].widget.attrs['placeholder']='Contraseña'
 
 class FormularioUsuario(forms.ModelForm):
     """Formulario de registro de un Usuario en la base de Datos
@@ -66,7 +66,29 @@ class FormularioUsuario(forms.ModelForm):
                     'placeholder':'Ingrese su nombre de Usuario',
                 }
             ),
-            
-
         }
+
+    def clean_password2(self):
+        """Validacion de contraseña
+
+        Metodo que valida que ambas contraseñas ingresadas sean iguales, esto antes de ser encriptdas y guardadas
+        en la base de datos, retorna la contraseña valida
+
+        Excepciones:
+        -ValidationError -- Cuando las contraseñas no son iguales muestra un mensaje de error
+        """
+
+        password1=self.cleaned_data.get('password1')
+        password2=self.cleaned_data.get('password2')
+        if password1 != password2:
+            raise forms.ValidationError('Contraseñas no coinciden!')
+        return password2
+
+    def save(self, commit=True):
+        user= super().save(commit=False)
+        user.set_password(self.cleaned_data['password1'])
+        if commit:
+            user.save()
+        return user
+
 
