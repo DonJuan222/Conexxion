@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="container">
+	<div class="row">
+		<div class="col-md-3 offset-md-3 mt-2 pd-2">
+			<table class="table table_bordered" >
+				<thead>
+					<tr>
+						<td><strong>#</strong> </td>
+						<td><strong>Ip del cliente</strong> </td>	
+						<td><strong>Nombre</strong></td>
+						<td><strong>Descripcion</strong></td>
+						<td><strong>Fecha de Instalacion</strong></td>
+						<td><strong>Valor del Pago</strong></td>
+						<td><strong>Fecha del pago</strong></td>
+						<td><strong>Valido Hasta</strong></td>
+						
+					</tr>
+				</thead>
+			
+				<tbody>
+					{% for cliente in client %}
+					
+					<tr>
+						<td>{{cliente.id}}</td>
+						<td>{{cliente.ip}}</td>
+						<td>{{cliente.nombre}}</td>	
+						<td>{{cliente.agenda.descripcion}}</td>	
+						<td>{{cliente.agenda.fecha_Instalacion}}</td>					
+						<td>{{cliente.agenda.valor_Pago}}</td>
+						<td>{{cliente.agenda.fecha_pago}}</td>
+						<td>{{cliente.agenda.fecha_Vencimiento}}</td>
+					</tr>
+					{% endfor %}
+					<div class="input-group-append">
+					<button>
+						<a class="btn btn-dark" href="/cliente/">Volver</a>
+					</button>
+					</div>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</main>
+
+	
+
+
+{% endblock content %}

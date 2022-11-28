@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if object_list %}
+<main class="container">
+    <div class="row mb-2">
+        <div class="col-sm-4 offset-md-4 mt-5">
+            <table  align="right" class="table table_bordered">
+                <thead>
+                    <tr>
+                        <td><strong>ID</strong> </td>
+                        <td><strong>Username</strong> </td>
+                        <td><strong>Nombres</strong> </td>
+                        <td><strong>Apellidos</strong> </td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for Usuario in object_list %}
+
+                    <tr>
+                        <td>{{Usuario.id}}</td>
+                        <td>{{Usuario.username}}</td>
+                        <td>{{Usuario.nombres}}</td>
+                        <td>{{Usuario.apellidos}}</td>
+
+                        <td><a href=""
+                                class="btn btn-secondary btn-sm mt-1">Editar</a>
+                            <a href=""
+                                class="btn btn-danger btn-sm mt-1">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+{% else %}
+<h1>No hay usuarios registrados</h1>
+{% endif %}
+<div class="col-sm-4 offset-md-4 mt-5">
+<button>
+    <a class="btn btn-secondary btn-sm" href="/cliente/">Volver</a>
+</button>
+</div>
+
+
+{% endblock content %}

@@ -11,7 +11,7 @@ method="POST">
     <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." name="buscar" value="{{ request.POST.buscar }}">
     <div class="input-group-append">
       <button class="btn btn-dark" type="submit">
-        <i class="fas fa-search fa-sm"> Buscar</i>
+        <i class="bi bi-search"> Buscar</i>
       </button>
     </div>
   </div>
@@ -19,10 +19,17 @@ method="POST">
 </form>
 </section>
 
+<section>
+	<div>
+		<a href="/cliente/create/" class="btn btn-secondary btn-sm offset-md-2"> Crear Cliente</a>
+	</div>
+	
+	</section>
+
 
 <main class="container">
 	<div class="row">
-		<div class="col-md-4 offset-md-2 mt-4">
+		<div class="col-md-3 offset-md-1 mt-2">
 			<table class="table table_bordered">
 				<thead>
 					<tr>
@@ -33,16 +40,11 @@ method="POST">
 						<td><strong>Apellido</strong></td>
 						<td><strong>Primer Telefono</strong></td>
 						<td><strong>Mensualidad</strong></td>
-						<td><strong>Fecha de Instalacion</strong></td>
-						<td><strong>Municipio</strong></td>
+						<td><strong >Municipio</strong></td>
 						<td><strong>Estado</strong></td>
+						<td><strong>Lugar de Residencia</strong></td>
 						<td><strong>Opciones</strong></td>
-						<!-- <td><strong>Pueblo</strong></td>
-						<td><strong>Direccion</strong></td>
-						<td><strong>Vereda</strong></td>
-						<td><strong>Descripcion</strong></td>
-						 -->
-			
+
 					</tr>
 				</thead>
 			
@@ -57,41 +59,28 @@ method="POST">
 						<td>{{cliente.apellido}}</td>
 						<td>{{cliente.telefono_uno}}</td>
 						<td>{{cliente.mensualidad}}</td>
-						<td>{{cliente.fecha_Instalacion}}</td>
 						<td>{{cliente.id_Municipio}}</td>
 						<td>{{cliente.id_Estado}}</td>
-						<td><a href="{% url 'editar_Cliente' cliente.id %}" class="btn btn-secondary btn-sm">Editar</a>
-							<a href="{% url 'eliminar_Cliente' cliente.id %}" class="btn btn-danger btn-sm">Eliminar</a></td>
+						<td>{{cliente.id_lugar_Residencia.pueblo}}</td>
+						<td><a href="{% url 'editar_Cliente' cliente.id %}" class="btn btn-secondary btn-sm mt-1">Editar</a>
+							<a href="{% url 'more_Cliente' cliente.id %}" class="btn btn-secondary btn-sm mt-1">Ver mas</a>
+							<a href="{% url 'eliminar_Cliente' cliente.id %}" class="btn btn-danger btn-sm mt-1">Eliminar</a>
+							</td>
+							
 						
-					
-					
-			
-			
 					</tr>
 					{% endfor %}
-
+				</tbody>
+			</table>
+			<div>
+				{% include 'CRUD/paginator.html' %}
+			</div>
 		</div>
 	</div>
 </main>
-		<!-- <tbody>
-			{% for lugar_Residencia in Residencia %}
-			<tr>
-				<td> {{lugar_Residencia.pueblo}}</td>
-				<td> {{lugar_Residencia.direccion}}</td>
-				<td> {{lugar_Residencia.vereda}}</td>
-				<td> {{lugar_Residencia.descripcion}}</td>
 	
-			</tr>
-			{% endfor %}
-		</tbody> -->
-	</tbody>
-</table>
 
-<section>
-<div>
-	<a href="/cliente/create/" class="btn btn-secondary btn-sm"> Crear Cliente</a>
-</div>
 
-</section>
 
 {% endblock content %}
+

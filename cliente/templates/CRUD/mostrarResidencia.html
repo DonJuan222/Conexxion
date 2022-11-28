@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<section>
+    <div>
+        <a href="/residencia/create/" class="btn btn-secondary btn-sm offset-md-2 mt-4"> Crear Residencia</a>
+    </div>
+</section>
+
+<main class="container">
+    <div class="row mb-2">
+        <div class="col-sm-4 offset-md-4 mt-5">
+            <table  align="right" class="table table_bordered">
+                <thead>
+                    <tr>
+                        <td><strong>#</strong> </td>
+                        <td><strong>Pueblo</strong> </td>
+                        <td><strong>Direccion</strong> </td>
+                        <td><strong>Vereda</strong> </td>
+                        <td><strong>Descripcion</strong> </td>
+                        <td><strong>Opciones</strong> </td>
+
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for lugar_Residencia in residencias %}
+
+                    <tr>
+                        <td>{{lugar_Residencia.id}}</td>
+                        <td>{{lugar_Residencia.pueblo}}</td>
+                        <td>{{lugar_Residencia.direccion}}</td>
+                        <td>{{lugar_Residencia.vereda}}</td>
+                        <td>{{lugar_Residencia.descripcion}}</td>
+
+                        <td><a href="{% url 'editar_Residencia' lugar_Residencia.id %}" class="btn btn-secondary btn-sm mt-1">Editar</a>
+                            <a href="{% url 'eliminar_Residencia' lugar_Residencia.id %}" class="btn btn-danger btn-sm mt-1">Eliminar</a>
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+<button>
+    <a href="/cliente/">Volver</a>
+</button>
+
+{% endblock content %}

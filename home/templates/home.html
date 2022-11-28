@@ -20,8 +20,12 @@
             Minus excepturi non numquam eaque iure facilis fugit, odit alias dolores autem?</p>
 
             <div class="text-center">
+                
+                <a class="btn btn-dark" href="/registrar_usuario/">Registrarse</a>
                 {% if user.is_authenticated %}
                 <a class="btn btn-dark" href="/cliente/">Clientes</a>
+                {% else %}
+                <a class="btn btn-dark" href="/login/">Ingresar</a>
                 {% endif %}
                 
             </div>
