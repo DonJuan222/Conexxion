@@ -6,11 +6,11 @@ from home.models import lugar_Residencia
 # Create your models here.
 
 class agenda(models.Model):
-    descripcion = models.CharField(max_length=200,verbose_name='Descripciones')
+    descripcion = models.CharField(max_length=100,verbose_name='Descripciones')
     valor_Pago = models.CharField(max_length=200,verbose_name='Valor del Pago')
-    fecha_pago = models.DateTimeField(null=True,verbose_name='Fecha de pago')
-    fecha_Vencimiento = models.DateTimeField(null=True,verbose_name='Valido Hasta')
-    fecha_Instalacion=models.DateField(null=True, verbose_name='Fecha de Instalacion')
+    fecha_pago = models.DateField(null=True,verbose_name='Fecha de pago')
+    fecha_Vencimiento = models.DateField(null=True,verbose_name='Valido Hasta')
+
     
     class Meta:
         db_table='Agenda'
