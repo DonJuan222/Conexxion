@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from cliente.models import cliente,municipio, estado, lugar_Residencia,agenda
 from django.db.models import Q
-from .forms import ClientForm, MunicipioForm, EstadoForm, ResidenciaForm
+from .forms import ClientForm, MunicipioForm, EstadoForm, ResidenciaForm, AgendaForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.http import Http404
@@ -13,7 +13,7 @@ def client(request):
     Clientes=cliente.objects.all().order_by('id')
     page=request.GET.get('page',1)
     try:
-        paginator=Paginator(Clientes, 4)
+        paginator=Paginator(Clientes, 10)
         Clientes=paginator.page(page)
     except:
         raise Http404
@@ -32,14 +32,35 @@ def client(request):
 
     })
 
+@login_required
+def create_Pago(request,pago_id):
+    pago=get_object_or_404(cliente, id=pago_id)
+    pago=cliente.objects.filter(id=pago_id).order_by('id')
+    if request.method == 'GET':
+        return render(request, 'CRUD/crearpago.html',{
+        'form': AgendaForm,  'pago':pago
+    })
+    else:
+        try:
+            form=AgendaForm(request.POST)
+            new_Municipio=form.save(commit=False)
+            new_Municipio.save()
+            return redirect('more_Cliente')
+
+        except ValueError:
+            return render (request, 'CRUD/crearpago.html',{
+                'form': AgendaForm,
+                'error': 'Por favor proporciona los datos'
+            })
+
+   
 @login_required   
-def more_Cliente(request, client_id):
+def mostrar_Pago(request, client_id):
     client=get_object_or_404(cliente, id=client_id)
     client=cliente.objects.filter(id=client_id).order_by('id')
     return render(request, 'CRUD/datosPago.html',{
         'client':client
-    })
-
+    }) 
 
 @login_required
 def create_Cliente(request):
@@ -60,7 +81,7 @@ def create_Cliente(request):
                 'error': 'Por favor proporciona los datos'
             })
 
-        
+
 @login_required   
 def editar_Cliente(request, client_id):
     client=get_object_or_404(cliente, id=client_id)
