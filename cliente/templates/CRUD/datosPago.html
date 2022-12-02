@@ -11,8 +11,7 @@
 						<td><strong>#</strong> </td>
 						<td><strong>Ip del cliente</strong> </td>	
 						<td><strong>Nombre</strong></td>
-						<td><strong>Descripcion</strong></td>
-						<td><strong>Fecha de Instalacion</strong></td>
+						<td><strong>Descripcion</strong></td>					
 						<td><strong>Valor del Pago</strong></td>
 						<td><strong>Fecha del pago</strong></td>
 						<td><strong>Valido Hasta</strong></td>
@@ -27,8 +26,7 @@
 						<td>{{cliente.id}}</td>
 						<td>{{cliente.ip}}</td>
 						<td>{{cliente.nombre}}</td>	
-						<td>{{cliente.agenda.descripcion}}</td>	
-						<td>{{cliente.agenda.fecha_Instalacion}}</td>					
+						<td>{{cliente.agenda.descripcion}}</td>					
 						<td>{{cliente.agenda.valor_Pago}}</td>
 						<td>{{cliente.agenda.fecha_pago}}</td>
 						<td>{{cliente.agenda.fecha_Vencimiento}}</td>
@@ -37,6 +35,7 @@
 					<div class="input-group-append">
 					<button>
 						<a class="btn btn-dark" href="/cliente/">Volver</a>
+						<a class="btn btn-secondary" href="/create_Pago/">Crear pago</a>
 					</button>
 					</div>
 				</tbody>
