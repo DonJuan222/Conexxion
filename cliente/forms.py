@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import cliente, estado, municipio, lugar_Residencia, agenda
+from .models import cliente, estado, municipio, lugar_Residencia, pago
 
 
 
@@ -25,7 +25,7 @@ class ResidenciaForm(ModelForm):
 
 class AgendaForm(ModelForm):
     class Meta:
-        model = agenda
+        model = pago
         fields ='__all__'
 
 

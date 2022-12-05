@@ -1,12 +1,22 @@
 from django.shortcuts import render,redirect, get_object_or_404
-from cliente.models import cliente,municipio, estado, lugar_Residencia,agenda
+from cliente.models import cliente,municipio, estado, lugar_Residencia,pago
 from django.db.models import Q
 from .forms import ClientForm, MunicipioForm, EstadoForm, ResidenciaForm, AgendaForm
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
 from django.core.paginator import Paginator
 from django.http import Http404
 
 # Create your views here.
+# class ClientListView(ListView):
+#     model=cliente
+#     template_name= 'CRUD/clientes.html'
+
+#     def get_context_data(self, **kwargs):
+#         context=super().get_context_data(**kwargs)
+#         context['titulo']='Clientes'
+#         return context
+
 @login_required
 def client(request):
     busqueda = request.POST.get("buscar")
@@ -203,11 +213,15 @@ def eliminar_Estado(request, estado_id):
     return redirect('estado')
 
 
-@login_required
-def mostrar_Residencia(request):
-    residencias=lugar_Residencia.objects.all()
-    return render(request, 'CRUD/mostrarResidencia.html',{
-        'residencias':residencias})
+class ResidenciaListView(ListView):
+    model=lugar_Residencia
+    template_name= 'CRUD/mostrarResidencia.html'
+
+# @login_required
+# def mostrar_Residencia(request):
+#     residencias=lugar_Residencia.objects.all()
+#     return render(request, 'CRUD/mostrarResidencia.html',{
+#         'residencias':residencias})
         
 @login_required
 def create_Residencia(request):
@@ -252,8 +266,8 @@ def eliminar_Residencia(request, residencia_id):
     return redirect('estado')
 
 @login_required
-def mostrar_agenda(request):
-    agendas=agenda.objects.all()
+def mostrar_pagos(request):
+    agendas=pago.objects.all()
     return render(request, 'agenda.html',{
         'agendas':agendas})
    
