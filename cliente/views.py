@@ -213,15 +213,15 @@ def eliminar_Estado(request, estado_id):
     return redirect('estado')
 
 
-class ResidenciaListView(ListView):
-    model=lugar_Residencia
-    template_name= 'CRUD/mostrarResidencia.html'
+# class ResidenciaListView(ListView):
+#     model=lugar_Residencia
+#     template_name= 'CRUD/mostrarResidencia.html'
 
-# @login_required
-# def mostrar_Residencia(request):
-#     residencias=lugar_Residencia.objects.all()
-#     return render(request, 'CRUD/mostrarResidencia.html',{
-#         'residencias':residencias})
+@login_required
+def mostrar_Residencia(request):
+    residencias=lugar_Residencia.objects.all()
+    return render(request, 'CRUD/mostrarResidencia.html',{
+        'residencias':residencias})
         
 @login_required
 def create_Residencia(request):

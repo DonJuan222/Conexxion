@@ -22,7 +22,7 @@ urlpatterns = [
     path('estado/editar/<int:estado_id>/', views.editar_Estado, name='editar_Estado'),
     path('estado/eliminar/<int:estado_id>/', views.eliminar_Estado, name='eliminar_Estado'),
 
-    path('residencia/', ResidenciaListView.as_view(), name='residencia'),
+    path('residencia/', mostrar_Residencia, name='residencia'),
     path('residencia/create/', views.create_Residencia, name='create_Residencia'),
     path('residencia/editar/<int:residencia_id>/', views.editar_Residencia, name='editar_Residencia'),
     path('residencia/eliminar/<int:residencia_id>/', views.eliminar_Residencia, name='eliminar_Residencia'),
