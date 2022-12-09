@@ -30,8 +30,6 @@ INSTALLED_APPS = [
     'home',
     'cliente',
     'usuario',
-   
-
     
 ]
 

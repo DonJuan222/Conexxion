@@ -2,35 +2,28 @@
 
 {% block content %}
 
-<section class="col-md-4 offset-md-4 mt-4">
-	
-<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
-method="POST">
-  {% csrf_token %}
-  <div class="input-group">
-    <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." name="buscar" value="{{ request.POST.buscar }}">
-    <div class="input-group-append">
-      <button class="btn btn-dark" type="submit">
-        <i class="bi bi-search"> Buscar</i>
-      </button>
-    </div>
-  </div>
-  
-</form>
-</section>
-
-<section>
-	<div>
-		<a href="/cliente/create/" class="btn btn-secondary btn-sm offset-md-2"> Crear Cliente</a>
-	</div>
-	
-	</section>
-
 
 <main class="container">
-	<div class="row">
-		<div class="col-md-3 offset-md-1 mt-2">
-			<table class="table table_bordered">
+	<div class="col-md-12">
+		<section class="col-md-4 offset-md-1 mt-1">
+		<span><a href="/cliente/create/" class="btn btn-secondary btn-sm offset-md-2"> Crear Cliente</a></span>
+		</section>
+	<section class="col-md-4 offset-md-8 mt-1 mb-1">
+	<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+	method="POST">
+	  {% csrf_token %}
+	  <div class="input-group">
+		<input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." name="buscar" value="{{ request.POST.buscar }}">
+		<div class="input-group-append">
+		  <button class="btn btn-dark" type="submit">
+			<i class="bi bi-search"> Buscar</i>
+		  </button>
+		</div>
+	  </div>
+	</form>
+	</section>
+		<div class="table-responsive">
+			<table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
 				<thead>
 					<tr>
 						<td><strong>#</strong> </td>
@@ -44,7 +37,9 @@ method="POST">
 						<td><strong >Municipio</strong></td>
 						<td><strong>Estado</strong></td>
 						<td><strong>Lugar de Residencia</strong></td>
-						<td><strong>Opciones</strong></td>
+						<td><strong>Editar</strong></td>
+						<td><strong>Pagos</strong></td>
+						<td><strong>Eliminar</strong></td>
 
 					</tr>
 				</thead>
@@ -64,12 +59,10 @@ method="POST">
 						<td>{{cliente.id_Municipio}}</td>
 						<td>{{cliente.id_Estado}}</td>
 						<td>{{cliente.id_lugar_Residencia.pueblo}}</td>
-						<td><a href="{% url 'editar_Cliente' cliente.id %}" class="btn btn-secondary btn-sm mt-1">Editar</a>
-							<a href="{% url 'more_Cliente' cliente.id %}" class="btn btn-secondary btn-sm mt-1">Pagos</a>
-							<a href="{% url 'eliminar_Cliente' cliente.id %}" class="btn btn-danger btn-sm mt-1">Eliminar</a>
-							</td>
-							
-						
+						<td><a href="{% url 'editar_Cliente' cliente.id %}" class="btn btn-secondary btn-sm mt-1">Editar</a></td>
+						<td><a href="{% url 'more_Cliente' cliente.id %}" class="btn btn-secondary btn-sm mt-1">Pagos</a></td>
+						<td><a href="{% url 'eliminar_Cliente' cliente.id %}" class="btn btn-danger btn-sm mt-1">Eliminar</a></td>
+					
 					</tr>
 					{% endfor %}
 				</tbody>
@@ -81,7 +74,6 @@ method="POST">
 	</div>
 </main>
 	
-
 
 
 {% endblock content %}

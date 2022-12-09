@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+
 
 class UsuarioManager(BaseUserManager):
     def create_user(self, email, username,nombres,apellidos, password=None):
@@ -29,12 +30,11 @@ class UsuarioManager(BaseUserManager):
         usuario.save()
         return usuario
 
-class Usuario(AbstractBaseUser):
+class Usuario(AbstractBaseUser, PermissionsMixin):
     username= models.CharField('Nombre de Usuario', unique=True, max_length=100)
     email= models.EmailField('Correo Electronico', max_length=254, unique=True)
     nombres= models.CharField('Nombres', max_length=200, blank=True, null=True)
     apellidos= models.CharField('Apellidos', max_length=200, blank=True, null=True)
-    imagen = models.ImageField('Imagen de Perfil', upload_to='perfil/', max_length=200, blank=True, null=True)
     usuario_activo = models.BooleanField(default=True)
     usuario_administrador = models.BooleanField(default=False)
     objects=UsuarioManager()
