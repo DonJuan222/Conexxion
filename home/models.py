@@ -13,6 +13,18 @@ class municipio(models.Model):
         verbose_name_plural='Municipios'
         ordering=['id']
 
+class pueblo(models.Model):
+    nombre=models.CharField(max_length=100, null=False, verbose_name='Nombre del Pueblo')
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        db_table='pueblo'
+        verbose_name='Pueblo'
+        verbose_name_plural='Pueblos'
+        ordering=['id']
+
     
 class estado(models.Model):
     tipo=models.CharField(max_length=100, null=False, verbose_name='tipo')
@@ -26,19 +38,3 @@ class estado(models.Model):
         verbose_name_plural='Estados'
         ordering=['id']
 
-
-class lugar_Residencia(models.Model):
-    pueblo=models.CharField(max_length=100,null=True,blank=True, verbose_name='Nombre del pueblo')
-    direccion=models.CharField(max_length=100,null=True,blank=True,  verbose_name='Direccion')
-    vereda=models.CharField(max_length=100,null=True,blank=True,  verbose_name='Vereda')
-    descripcion=models.TextField( null=True,blank=True, verbose_name='Descripcion')
-
-    class Meta:
-        db_table='lugar_Residencia'
-        verbose_name='Residencia'
-        verbose_name_plural='Residencias'
-        ordering=['id']
-
-    def __str__(self):
-        return self.pueblo
-   

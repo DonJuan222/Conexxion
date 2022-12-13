@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect, get_object_or_404
-from cliente.models import cliente,municipio, estado, lugar_Residencia,pago
+from cliente.models import cliente,municipio, estado,pago
 from django.db.models import Q
-from .forms import ClientForm, MunicipioForm, EstadoForm, ResidenciaForm, AgendaForm
+from .forms import ClientForm, MunicipioForm, EstadoForm, AgendaForm
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from django.core.paginator import Paginator
@@ -210,59 +210,6 @@ def editar_Estado(request, estado_id):
 def eliminar_Estado(request, estado_id):
     estados=get_object_or_404(estado, id=estado_id)
     estados.delete()
-    return redirect('estado')
-
-
-# class ResidenciaListView(ListView):
-#     model=lugar_Residencia
-#     template_name= 'CRUD/mostrarResidencia.html'
-
-@login_required
-def mostrar_Residencia(request):
-    residencias=lugar_Residencia.objects.all()
-    return render(request, 'CRUD/mostrarResidencia.html',{
-        'residencias':residencias})
-        
-@login_required
-def create_Residencia(request):
-    if request.method == 'GET':
-        return render(request, 'CRUD/createResidencia.html',{
-        'form': ResidenciaForm
-    })
-    else:
-        try:
-            form=ResidenciaForm(request.POST)
-            new_residencia=form.save(commit=False)
-            new_residencia.save()
-            return redirect('residencia')
-
-        except ValueError:
-            return render (request, 'CRUD/createResidencia.html',{
-                'form': ResidenciaForm,
-                'error': 'Por favor proporciona los datos'
-            })
-
-        
-@login_required   
-def editar_Residencia(request, residencia_id):
-    residencias=get_object_or_404(lugar_Residencia, id=residencia_id)
-
-    data={
-        'form': ResidenciaForm(instance=residencias)
-    }
-
-    if request.method== 'POST':
-        formulario=ResidenciaForm(data=request.POST, instance=residencias, files=request.FILES)
-        if formulario.is_valid():
-            formulario.save()
-            return redirect('residencia')
-        data['form']=formulario    
-    return render(request, 'CRUD/editarResidencia.html', data)
-
-@login_required
-def eliminar_Residencia(request, residencia_id):
-    residencias=get_object_or_404(lugar_Residencia, id=residencia_id)
-    residencias.delete()
     return redirect('estado')
 
 @login_required

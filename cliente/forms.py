@@ -1,12 +1,12 @@
 from django.forms import ModelForm
-from .models import cliente, estado, municipio, lugar_Residencia, pago
+from django import forms
+from .models import cliente, estado, municipio, pago
 
-
-
-class ClientForm(ModelForm):
+class ClientForm(forms.ModelForm):
+    fecha_instalacion=forms.DateInput()
     class Meta:
         model = cliente
-        fields ='__all__'
+        fields = '__all__'
 
 class MunicipioForm(ModelForm):
     class Meta:
@@ -16,11 +16,6 @@ class MunicipioForm(ModelForm):
 class EstadoForm(ModelForm):
     class Meta:
         model = estado
-        fields ='__all__'
-
-class ResidenciaForm(ModelForm):
-    class Meta:
-        model = lugar_Residencia
         fields ='__all__'
 
 class AgendaForm(ModelForm):

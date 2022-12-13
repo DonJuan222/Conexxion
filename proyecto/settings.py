@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'home',
     'cliente',
     'usuario',
+    'bootstrap_datepicker_plus',
     
 ]
 
@@ -70,9 +71,9 @@ WSGI_APPLICATION = 'proyecto.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_conexxion',
+        'NAME': 'conexxion_bd',
         'USER': 'root',
-        'PASSWORD': '150346Dkt810',
+        'PASSWORD': 'SENAsamaria12',
         'HOST': '127.0.0.1',
         'PORT': '3306',
 

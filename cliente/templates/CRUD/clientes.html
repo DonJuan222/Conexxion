@@ -34,9 +34,12 @@
 						<td><strong>Primer Telefono</strong></td>
 						<td><strong>Mensualidad</strong></td>
 						<td><strong>Fecha de Instalacion</strong></td>
-						<td><strong >Municipio</strong></td>
+						<td><strong>Municipio</strong></td>
+						<td><strong>Pueblo</strong></td>
 						<td><strong>Estado</strong></td>
-						<td><strong>Lugar de Residencia</strong></td>
+						<td><strong>Direccion</strong></td>
+						<td><strong>Vereda</strong></td>
+						<td><strong>Descripcion</strong></td>
 						<td><strong>Editar</strong></td>
 						<td><strong>Pagos</strong></td>
 						<td><strong>Eliminar</strong></td>
@@ -55,10 +58,14 @@
 						<td>{{cliente.apellido}}</td>
 						<td>{{cliente.telefono_uno}}</td>
 						<td>{{cliente.mensualidad}}</td>
-						<td>{{cliente.fecha_Instalacion}}</td>	
+						<td>{{cliente.fecha_instalacion}}</td>	
 						<td>{{cliente.id_Municipio}}</td>
+						<td>{{cliente.id_Pueblo}}</td>
 						<td>{{cliente.id_Estado}}</td>
-						<td>{{cliente.id_lugar_Residencia.pueblo}}</td>
+						<td>{{cliente.direccion}}</td>
+						<td>{{cliente.vereda}}</td>
+						<td>{{cliente.descripcion}}</td>
+
 						<td><a href="{% url 'editar_Cliente' cliente.id %}" class="btn btn-secondary btn-sm mt-1">Editar</a></td>
 						<td><a href="{% url 'more_Cliente' cliente.id %}" class="btn btn-secondary btn-sm mt-1">Pagos</a></td>
 						<td><a href="{% url 'eliminar_Cliente' cliente.id %}" class="btn btn-danger btn-sm mt-1">Eliminar</a></td>
