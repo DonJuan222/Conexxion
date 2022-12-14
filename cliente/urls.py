@@ -22,7 +22,6 @@ urlpatterns = [
     path('estado/editar/<int:estado_id>/', views.editar_Estado, name='editar_Estado'),
     path('estado/eliminar/<int:estado_id>/', views.eliminar_Estado, name='eliminar_Estado'),
 
-    path('eliminar/<int:client_id>/', views.eliminar_Cliente, name='eliminar_Cliente'),
     path('agenda/', views.mostrar_pagos, name='agenda'),
     
 ]

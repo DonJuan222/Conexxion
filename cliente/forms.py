@@ -3,7 +3,6 @@ from django import forms
 from .models import cliente, estado, municipio, pago
 
 class ClientForm(forms.ModelForm):
-    fecha_instalacion=forms.DateInput()
     class Meta:
         model = cliente
         fields = '__all__'
