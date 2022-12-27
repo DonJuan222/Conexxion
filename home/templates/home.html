@@ -5,17 +5,17 @@
 {% block content %}
 
 
-    <section class="card card-body">
+    
         <div class="content">
             <div>
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 mt-5">
                       {% block body %}
                         <div class="col-md-12 prueba">
-                            <div class="card bg-primary">
+                            <div class="card bg-secondary">
                                 <div class="card-body">
                                     <blockquote class="blockquote mb-0 text-light text-center">
-                                        <h1 class="text-light">Hola {{ user.username }} bienvenido</h1>
+                                        <h1 class="text-light">Hola {{ user.username }} Bienvenido</h1>
                                         
                                     </blockquote>
                                 </div>
@@ -27,17 +27,18 @@
         </div>
 
             <div class="text-center">
+                <div class="col-lg-12 mt-5"></div>
                 
-                <a class="btn btn-dark" href="/registrar_usuario/">Registrarse</a>
                 {% if user.is_authenticated %}
+                <a class="btn btn-dark" href="/registrar_usuario/">Registrar</a>
                 <a class="btn btn-dark" href="/cliente/">Clientes</a>
                 {% else %}
                 <a class="btn btn-dark" href="/login/">Ingresar</a>
                 {% endif %}
-                
+                </div>
             </div>
 
 
-    </section>
+
 
 {% endblock %}

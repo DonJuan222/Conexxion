@@ -49,8 +49,8 @@
 			
 				<tbody>
 					{% for cliente in Clientes %}
-			
-					<tr>
+
+					<tr {% if cliente.status == 'arriba' %} class="success" {% elif cliente.status == 'abajo' %} class="danger" {% endif %}>
 						<td>{{cliente.id}}</td>
 						<td>{{cliente.ip}}</td>
 						<td>{{cliente.cedula}}</td>
@@ -66,10 +66,9 @@
 						<td>{{cliente.vereda}}</td>
 						<td>{{cliente.descripcion}}</td>
 
-						<td><a href="{% url 'editar_Cliente' cliente.id %}" class="btn btn-secondary btn-sm mt-1">Editar</a></td>
+						<td><a href="{% url 'editar_Cliente' cliente.id %}"class="btn btn-secondary btn-sm mt-1">Editar</a></td>
 						<td><a href="{% url 'more_Cliente' cliente.id %}" class="btn btn-secondary btn-sm mt-1">Pagos</a></td>
-						<td><a href="{% url 'eliminar_Cliente' cliente.id %}" class="btn btn-danger btn-sm mt-1">Eliminar</a></td>
-					
+						<td><a href="{% url 'eliminar_Cliente' cliente.id %}" class="btn btn-danger btnEliminacion btn-sm mt-1">Eliminar</a></td>
 					</tr>
 					{% endfor %}
 				</tbody>
@@ -80,8 +79,18 @@
 		</div>
 	</div>
 </main>
-	
-
-
 {% endblock content %}
+{% block extra_js %}
 
+
+<script>
+
+$(document).ready(function() {
+    $('#query').on('keyup', function() {
+      $('form').submit();
+    });
+  });
+
+</script>
+
+  {% endblock extra_js %}

@@ -32,7 +32,8 @@ def client(request):
             Q(ip__icontains=busqueda)|
             Q(cedula__icontains=busqueda)|
             Q(nombre__icontains=busqueda)|
-            Q(apellido__icontains=busqueda)
+            Q(apellido__icontains=busqueda)|
+            Q(fecha_instalacion__icontains=busqueda)
         
         ).distinct()
 
